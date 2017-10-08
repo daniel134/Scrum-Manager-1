@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="equipojorgeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AspNetRoles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Usuario__rol_FK__2E1BDC42" FromRole="AspNetRoles" ToRole="Usuario" />
+    <NavigationProperty Name="Permisos" Relationship="Self.Permisos_asociados_roles" FromRole="AspNetRoles" ToRole="Permisos" />
+  </EntityType>
+  <EntityType Name="Criterio">
+    <Key>
+      <PropertyRef Name="id_criterio" />
+    </Key>
+    <Property Name="id_criterio" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contexto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="resultado" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="evento" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="historia_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Historia" Relationship="Self.FK__Criterio__histor__32E0915F" FromRole="Criterio" ToRole="Historia" />
+  </EntityType>
+  <EntityType Name="Historia">
+    <Key>
+      <PropertyRef Name="id_historia" />
+    </Key>
+    <Property Name="id_historia" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="razon" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="prioridad" Type="Int32" Nullable="false" />
+    <Property Name="modulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sprint_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Criterio" Relationship="Self.FK__Criterio__histor__32E0915F" FromRole="Historia" ToRole="Criterio" />
+    <NavigationProperty Name="Sprint" Relationship="Self.FK__Historia__sprint__300424B4" FromRole="Historia" ToRole="Sprint" />
+    <NavigationProperty Name="Tarea" Relationship="Self.FK__Tarea__historia___30F848ED" FromRole="Historia" ToRole="Tarea" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="id_permiso" />
+    </Key>
+    <Property Name="id_permiso" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="permiso" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.Permisos_asociados_roles" FromRole="Permisos" ToRole="AspNetRoles" />
+  </EntityType>
+  <EntityType Name="Progreso">
+    <Key>
+      <PropertyRef Name="id_progreso" />
+    </Key>
+    <Property Name="id_progreso" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="porcentaje" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="tarea_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Tarea" Relationship="Self.FK__Progreso__tarea___33D4B598" FromRole="Progreso" ToRole="Tarea" />
+  </EntityType>
+  <EntityType Name="Proyecto">
+    <Key>
+      <PropertyRef Name="id_proyecto" />
+    </Key>
+    <Property Name="id_proyecto" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="descripcion" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fecha_in" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_fin" Type="DateTime" Precision="0" />
+    <Property Name="lider_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Proyecto__lider___34C8D9D1" FromRole="Proyecto" ToRole="Usuario" />
+    <NavigationProperty Name="Sprint" Relationship="Self.FK__Sprint__proyecto__2F10007B" FromRole="Proyecto" ToRole="Sprint" />
+    <NavigationProperty Name="Usuario1" Relationship="Self.FK__Usuario__proyect__2D27B809" FromRole="Proyecto" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Sprint">
+    <Key>
+      <PropertyRef Name="id_sprint" />
+    </Key>
+    <Property Name="id_sprint" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numero" Type="Int32" Nullable="false" />
+    <Property Name="fecha_in" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="fecha_fin" Type="DateTime" Precision="0" />
+    <Property Name="puntos_totales" Type="Int32" />
+    <Property Name="proyecto_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Historia" Relationship="Self.FK__Historia__sprint__300424B4" FromRole="Sprint" ToRole="Historia" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK__Sprint__proyecto__2F10007B" FromRole="Sprint" ToRole="Proyecto" />
+  </EntityType>
+  <EntityType Name="Tarea">
+    <Key>
+      <PropertyRef Name="id_tarea" />
+    </Key>
+    <Property Name="id_tarea" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="alias" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="esfuerzo" Type="Int32" Nullable="false" />
+    <Property Name="historia_fk" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usuario_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Historia" Relationship="Self.FK__Tarea__historia___30F848ED" FromRole="Tarea" ToRole="Historia" />
+    <NavigationProperty Name="Progreso" Relationship="Self.FK__Progreso__tarea___33D4B598" FromRole="Tarea" ToRole="Progreso" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Tarea__usuario_F__31EC6D26" FromRole="Tarea" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Telefono">
+    <Key>
+      <PropertyRef Name="id_telefono" />
+    </Key>
+    <Property Name="id_telefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefono1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Usuario" Relationship="Self.FK__Telefono__email___35BCFE0A" FromRole="Telefono" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="email" />
+    </Key>
+    <Property Name="nombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="apellido2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="cedula" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sexo" Type="Boolean" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="proyecto_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="rol_FK" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="AspNetRoles" Relationship="Self.FK__Usuario__rol_FK__2E1BDC42" FromRole="Usuario" ToRole="AspNetRoles" />
+    <NavigationProperty Name="Proyecto" Relationship="Self.FK__Proyecto__lider___34C8D9D1" FromRole="Usuario" ToRole="Proyecto" />
+    <NavigationProperty Name="Proyecto1" Relationship="Self.FK__Usuario__proyect__2D27B809" FromRole="Usuario" ToRole="Proyecto" />
+    <NavigationProperty Name="Tarea" Relationship="Self.FK__Tarea__usuario_F__31EC6D26" FromRole="Usuario" ToRole="Tarea" />
+    <NavigationProperty Name="Telefono" Relationship="Self.FK__Telefono__email___35BCFE0A" FromRole="Usuario" ToRole="Telefono" />
+  </EntityType>
+  <Association Name="FK__Usuario__rol_FK__2E1BDC42">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRoles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="rol_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Criterio__histor__32E0915F">
+    <End Role="Historia" Type="Self.Historia" Multiplicity="1" />
+    <End Role="Criterio" Type="Self.Criterio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Historia">
+        <PropertyRef Name="id_historia" />
+      </Principal>
+      <Dependent Role="Criterio">
+        <PropertyRef Name="historia_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Historia__sprint__300424B4">
+    <End Role="Sprint" Type="Self.Sprint" Multiplicity="1" />
+    <End Role="Historia" Type="Self.Historia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sprint">
+        <PropertyRef Name="id_sprint" />
+      </Principal>
+      <Dependent Role="Historia">
+        <PropertyRef Name="sprint_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarea__historia___30F848ED">
+    <End Role="Historia" Type="Self.Historia" Multiplicity="1" />
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Historia">
+        <PropertyRef Name="id_historia" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="historia_fk" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Progreso__tarea___33D4B598">
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="1" />
+    <End Role="Progreso" Type="Self.Progreso" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tarea">
+        <PropertyRef Name="id_tarea" />
+      </Principal>
+      <Dependent Role="Progreso">
+        <PropertyRef Name="tarea_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Proyecto__lider___34C8D9D1">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Proyecto">
+        <PropertyRef Name="lider_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Sprint__proyecto__2F10007B">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="1" />
+    <End Role="Sprint" Type="Self.Sprint" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="id_proyecto" />
+      </Principal>
+      <Dependent Role="Sprint">
+        <PropertyRef Name="proyecto_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Usuario__proyect__2D27B809">
+    <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="0..1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proyecto">
+        <PropertyRef Name="id_proyecto" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="proyecto_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tarea__usuario_F__31EC6D26">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Tarea" Type="Self.Tarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="usuario_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Telefono__email___35BCFE0A">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Telefono" Type="Self.Telefono" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="email" />
+      </Principal>
+      <Dependent Role="Telefono">
+        <PropertyRef Name="email_FK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Permisos_asociados_roles">
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="equipojorgeEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="Criterio" EntityType="Self.Criterio" />
+    <EntitySet Name="Historia" EntityType="Self.Historia" />
+    <EntitySet Name="Permisos" EntityType="Self.Permisos" />
+    <EntitySet Name="Progreso" EntityType="Self.Progreso" />
+    <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
+    <EntitySet Name="Sprint" EntityType="Self.Sprint" />
+    <EntitySet Name="Tarea" EntityType="Self.Tarea" />
+    <EntitySet Name="Telefono" EntityType="Self.Telefono" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+    <AssociationSet Name="FK__Usuario__rol_FK__2E1BDC42" Association="Self.FK__Usuario__rol_FK__2E1BDC42">
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Criterio__histor__32E0915F" Association="Self.FK__Criterio__histor__32E0915F">
+      <End Role="Historia" EntitySet="Historia" />
+      <End Role="Criterio" EntitySet="Criterio" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Historia__sprint__300424B4" Association="Self.FK__Historia__sprint__300424B4">
+      <End Role="Sprint" EntitySet="Sprint" />
+      <End Role="Historia" EntitySet="Historia" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarea__historia___30F848ED" Association="Self.FK__Tarea__historia___30F848ED">
+      <End Role="Historia" EntitySet="Historia" />
+      <End Role="Tarea" EntitySet="Tarea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Progreso__tarea___33D4B598" Association="Self.FK__Progreso__tarea___33D4B598">
+      <End Role="Tarea" EntitySet="Tarea" />
+      <End Role="Progreso" EntitySet="Progreso" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Proyecto__lider___34C8D9D1" Association="Self.FK__Proyecto__lider___34C8D9D1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Proyecto" EntitySet="Proyecto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Sprint__proyecto__2F10007B" Association="Self.FK__Sprint__proyecto__2F10007B">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Sprint" EntitySet="Sprint" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Usuario__proyect__2D27B809" Association="Self.FK__Usuario__proyect__2D27B809">
+      <End Role="Proyecto" EntitySet="Proyecto" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tarea__usuario_F__31EC6D26" Association="Self.FK__Tarea__usuario_F__31EC6D26">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Tarea" EntitySet="Tarea" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Telefono__email___35BCFE0A" Association="Self.FK__Telefono__email___35BCFE0A">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Telefono" EntitySet="Telefono" />
+    </AssociationSet>
+    <AssociationSet Name="Permisos_asociados_roles" Association="Self.Permisos_asociados_roles">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

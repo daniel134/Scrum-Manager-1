@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="equipojorgeModelStoreContainer" CdmEntityContainer="equipojorgeEntities">
+    <EntitySetMapping Name="AspNetRoles">
+      <EntityTypeMapping TypeName="equipojorgeModel.AspNetRoles">
+        <MappingFragment StoreEntitySet="AspNetRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Criterio">
+      <EntityTypeMapping TypeName="equipojorgeModel.Criterio">
+        <MappingFragment StoreEntitySet="Criterio">
+          <ScalarProperty Name="id_criterio" ColumnName="id_criterio" />
+          <ScalarProperty Name="contexto" ColumnName="contexto" />
+          <ScalarProperty Name="resultado" ColumnName="resultado" />
+          <ScalarProperty Name="evento" ColumnName="evento" />
+          <ScalarProperty Name="historia_FK" ColumnName="historia_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Historia">
+      <EntityTypeMapping TypeName="equipojorgeModel.Historia">
+        <MappingFragment StoreEntitySet="Historia">
+          <ScalarProperty Name="id_historia" ColumnName="id_historia" />
+          <ScalarProperty Name="razon" ColumnName="razon" />
+          <ScalarProperty Name="prioridad" ColumnName="prioridad" />
+          <ScalarProperty Name="modulo" ColumnName="modulo" />
+          <ScalarProperty Name="sprint_FK" ColumnName="sprint_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisos">
+      <EntityTypeMapping TypeName="equipojorgeModel.Permisos">
+        <MappingFragment StoreEntitySet="Permisos">
+          <ScalarProperty Name="id_permiso" ColumnName="id_permiso" />
+          <ScalarProperty Name="permiso" ColumnName="permiso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Progreso">
+      <EntityTypeMapping TypeName="equipojorgeModel.Progreso">
+        <MappingFragment StoreEntitySet="Progreso">
+          <ScalarProperty Name="id_progreso" ColumnName="id_progreso" />
+          <ScalarProperty Name="porcentaje" ColumnName="porcentaje" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="tarea_FK" ColumnName="tarea_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proyecto">
+      <EntityTypeMapping TypeName="equipojorgeModel.Proyecto">
+        <MappingFragment StoreEntitySet="Proyecto">
+          <ScalarProperty Name="id_proyecto" ColumnName="id_proyecto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha_in" ColumnName="fecha_in" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="lider_FK" ColumnName="lider_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sprint">
+      <EntityTypeMapping TypeName="equipojorgeModel.Sprint">
+        <MappingFragment StoreEntitySet="Sprint">
+          <ScalarProperty Name="id_sprint" ColumnName="id_sprint" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="fecha_in" ColumnName="fecha_in" />
+          <ScalarProperty Name="fecha_fin" ColumnName="fecha_fin" />
+          <ScalarProperty Name="puntos_totales" ColumnName="puntos_totales" />
+          <ScalarProperty Name="proyecto_FK" ColumnName="proyecto_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tarea">
+      <EntityTypeMapping TypeName="equipojorgeModel.Tarea">
+        <MappingFragment StoreEntitySet="Tarea">
+          <ScalarProperty Name="id_tarea" ColumnName="id_tarea" />
+          <ScalarProperty Name="alias" ColumnName="alias" />
+          <ScalarProperty Name="esfuerzo" ColumnName="esfuerzo" />
+          <ScalarProperty Name="historia_fk" ColumnName="historia_fk" />
+          <ScalarProperty Name="usuario_FK" ColumnName="usuario_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Telefono">
+      <EntityTypeMapping TypeName="equipojorgeModel.Telefono">
+        <MappingFragment StoreEntitySet="Telefono">
+          <ScalarProperty Name="id_telefono" ColumnName="id_telefono" />
+          <ScalarProperty Name="telefono1" ColumnName="telefono" />
+          <ScalarProperty Name="email_FK" ColumnName="email_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="equipojorgeModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="cedula" ColumnName="cedula" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="proyecto_FK" ColumnName="proyecto_FK" />
+          <ScalarProperty Name="rol_FK" ColumnName="rol_FK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Permisos_asociados_roles" TypeName="equipojorgeModel.Permisos_asociados_roles" StoreEntitySet="Permisos_asociados_roles">
+      <EndProperty Name="Permisos">
+        <ScalarProperty Name="id_permiso" ColumnName="permiso_fk" />
+      </EndProperty>
+      <EndProperty Name="AspNetRoles">
+        <ScalarProperty Name="Id" ColumnName="rol_fk" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
