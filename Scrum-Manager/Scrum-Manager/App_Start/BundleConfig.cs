@@ -26,6 +26,8 @@ namespace Scrum_Manager
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-yeti.css",
                       "~/Content/site.css"));
+            bundles.Add(new StyleBundle("~/Content/login").Include(
+                "~/Content/Login.css"));
         }
     }
 }
