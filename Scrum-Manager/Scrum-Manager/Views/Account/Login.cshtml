@@ -1,5 +1,4 @@
-﻿@using Scrum_Manager.Models
-@model LoginViewModel
+﻿@model Scrum_Manager.Models.Usuario
 @{
     Layout = null;
     ViewBag.Title = "Log in";
@@ -21,23 +20,26 @@
             <h1 id="title" class="hidden"><span id="logo">SCRUM <span>Manager</span></span></h1>
         </div>
         <div class="login-box">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" })){
+            @using (Html.BeginForm("Login", "Account", FormMethod.Post)){
             @Html.AntiForgeryToken()
-            <div class="box-header">
+                <div class="box-header">
                 <h2>Log In</h2>
             </div>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(model => model.email, new { @class = ".login-box label" })
             <br />
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+             @Html.TextBoxFor(model => model.email, new { @class = ".login-box input" })
+             <br />
+             @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
             <br />
-            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            @Html.LabelFor(model => model.contrasena, new { @class = ".login-box label" })
             <br />
-                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                @Html.PasswordFor(model => model.contrasena, new { @class = ".login-box input" })
+                <br />
+                @Html.ValidationMessageFor(model => model.contrasena, "", new { @class = "text-danger" })
+                <br />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <br />
-            <button type="submit">Entrar</button>
+            <input type="submit" value="Entrar"/>
             <br />
             <a href="#"><p class="small">¿Olvidó su contraseña?</p></a>
             }
@@ -47,5 +49,14 @@
 </html>
 
 @section Scripts {
+    @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
+    @if (@ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            $(function () {
+                alert("@ViewBag.Message")
+            });
+        </script>
+    }
 }

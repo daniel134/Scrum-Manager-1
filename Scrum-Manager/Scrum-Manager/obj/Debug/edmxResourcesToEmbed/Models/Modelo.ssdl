@@ -103,6 +103,8 @@
     <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="proyecto_FK" Type="varchar" MaxLength="255" />
     <Property Name="rol_FK" Type="varchar" MaxLength="255" />
+    <Property Name="user_FK" Type="nvarchar" MaxLength="128" />
+    <Property Name="contrasena" Type="varchar" MaxLength="255" Nullable="false" />
   </EntityType>
   <Association Name="FK__Criterio__histor__32E0915F">
     <End Role="Historia" Type="Self.Historia" Multiplicity="1" />

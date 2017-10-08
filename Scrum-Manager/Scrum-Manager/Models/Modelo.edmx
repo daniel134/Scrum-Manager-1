@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="equipojorgeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="equipojorgeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -108,6 +108,8 @@
           <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="proyecto_FK" Type="varchar" MaxLength="255" />
           <Property Name="rol_FK" Type="varchar" MaxLength="255" />
+          <Property Name="user_FK" Type="nvarchar" MaxLength="128" />
+          <Property Name="contrasena" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <Association Name="FK__Criterio__histor__32E0915F">
           <End Role="Historia" Type="Self.Historia" Multiplicity="1" />
@@ -314,8 +316,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="equipojorgeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -436,6 +437,8 @@
           <NavigationProperty Name="Proyecto1" Relationship="Self.FK__Usuario__proyect__2D27B809" FromRole="Usuario" ToRole="Proyecto" />
           <NavigationProperty Name="Tarea" Relationship="Self.FK__Tarea__usuario_F__31EC6D26" FromRole="Usuario" ToRole="Tarea" />
           <NavigationProperty Name="Telefono" Relationship="Self.FK__Telefono__email___35BCFE0A" FromRole="Usuario" ToRole="Telefono" />
+          <Property Name="user_FK" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK__Usuario__rol_FK__2E1BDC42">
           <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1" />
@@ -718,6 +721,8 @@
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="equipojorgeModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+                <ScalarProperty Name="user_FK" ColumnName="user_FK" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido1" ColumnName="apellido1" />
                 <ScalarProperty Name="apellido2" ColumnName="apellido2" />

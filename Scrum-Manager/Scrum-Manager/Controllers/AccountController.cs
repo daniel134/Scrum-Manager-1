@@ -12,7 +12,6 @@ using Scrum_Manager.Models;
 
 namespace Scrum_Manager.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -64,18 +63,27 @@ namespace Scrum_Manager.Controllers
         //
         // POST: /Account/Login
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        public ActionResult Login(Usuario modeloUsuario)
         {
-            if (!ModelState.IsValid)
+            equipojorgeEntities db = new equipojorgeEntities();
+            var detallesUsuario = db.Usuario.Where(usuarioBase =>
+                usuarioBase.email == modeloUsuario.email && usuarioBase.contrasena == modeloUsuario.contrasena).FirstOrDefault();
+
+            if (detallesUsuario == null)
             {
-                return View(model);
+                ModelState.AddModelError("", "No se puede ingresar al sistema");
+                return View(modeloUsuario);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home",new{nombre = detallesUsuario.nombre, apellido = detallesUsuario.apellido1});
             }
 
+            /*
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.email, model.contrasena, false, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -83,12 +91,14 @@ namespace Scrum_Manager.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
                 case SignInStatus.Failure:
                 default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
+                    ModelState.AddModelError("", "No se ha podido ingresar al sistema");
                     return View(model);
-            }
+            }*/
+
+            return View(modeloUsuario);
         }
 
         //

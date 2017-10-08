@@ -50,6 +50,10 @@ p.small {
     margin: 20px 0 0;
 }
 
+.text-danger{
+    color : red;
+}
+
 
 /* Layout */
 .container {

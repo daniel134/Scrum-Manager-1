@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace Scrum_Manager.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(int? id)
         {
             return View();
         }
@@ -24,7 +23,6 @@ namespace Scrum_Manager.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

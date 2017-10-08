@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 namespace Scrum_Manager.Models
 {
     using System;
@@ -27,9 +30,20 @@ namespace Scrum_Manager.Models
         public string apellido2 { get; set; }
         public string cedula { get; set; }
         public bool sexo { get; set; }
+
+        [Required(ErrorMessage = "Ingrese una dirección de correo electrónico")]
+        [EmailAddress(ErrorMessage = "Dirección de correo inválida")]
+        [DisplayName("Correo")]
         public string email { get; set; }
+
         public string proyecto_FK { get; set; }
         public string rol_FK { get; set; }
+        public string user_FK { get; set; }
+
+        [Required(ErrorMessage = "Ingrese una contraseña")]
+        [DataType(DataType.Password)]
+        [DisplayName("Contraseña")]
+        public string contrasena { get; set; }
     
         public virtual AspNetRoles AspNetRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

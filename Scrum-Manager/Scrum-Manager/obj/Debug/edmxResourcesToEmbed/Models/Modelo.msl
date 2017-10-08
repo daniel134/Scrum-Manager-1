@@ -96,6 +96,8 @@
     <EntitySetMapping Name="Usuario">
       <EntityTypeMapping TypeName="equipojorgeModel.Usuario">
         <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
+          <ScalarProperty Name="user_FK" ColumnName="user_FK" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido1" ColumnName="apellido1" />
           <ScalarProperty Name="apellido2" ColumnName="apellido2" />
