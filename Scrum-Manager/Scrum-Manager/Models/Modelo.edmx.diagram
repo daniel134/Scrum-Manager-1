@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4185b4feed764349a6dd73d202a1766c" Name="Diagram1">
+        <EntityTypeShape EntityType="equipojorgeModel.AspNetRoles" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Criterio" Width="1.5" PointX="14.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Historia" Width="1.5" PointX="12" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Permisos" Width="1.5" PointX="0.875" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Progreso" Width="1.5" PointX="16.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Proyecto" Width="1.5" PointX="7.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Sprint" Width="1.5" PointX="9.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Tarea" Width="1.5" PointX="14.25" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Telefono" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="equipojorgeModel.Usuario" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="equipojorgeModel.FK__Usuario__rol_FK__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Criterio__histor__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Historia__sprint__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Tarea__historia___30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Progreso__tarea___33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Proyecto__lider___34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Sprint__proyecto__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Usuario__proyect__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Tarea__usuario_F__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.FK__Telefono__email___35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="equipojorgeModel.Permisos_asociados_roles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
