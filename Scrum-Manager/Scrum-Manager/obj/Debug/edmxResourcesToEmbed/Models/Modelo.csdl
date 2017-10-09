@@ -117,6 +117,8 @@
     <NavigationProperty Name="Proyecto1" Relationship="Self.FK__Usuario__proyect__2D27B809" FromRole="Usuario" ToRole="Proyecto" />
     <NavigationProperty Name="Tarea" Relationship="Self.FK__Tarea__usuario_F__31EC6D26" FromRole="Usuario" ToRole="Tarea" />
     <NavigationProperty Name="Telefono" Relationship="Self.FK__Telefono__email___35BCFE0A" FromRole="Usuario" ToRole="Telefono" />
+    <Property Name="user_FK" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="contrasena" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
   </EntityType>
   <Association Name="FK__Usuario__rol_FK__2E1BDC42">
     <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1" />

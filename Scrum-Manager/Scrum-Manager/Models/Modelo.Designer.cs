@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Roy\Documents\UCR\Ingenieria del software 1\Scrum-Manager\Scrum-Manager\Scrum-Manager\Models\Modelo.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Roy\Documents\UCR\Ingenieria del software 1\Repositorio - Proyecto\Scrum-Manager\Scrum-Manager\Scrum-Manager\Models\Modelo.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace Scrum_Manager.Models
 {
     using System;
@@ -22,7 +24,10 @@ namespace Scrum_Manager.Models
         }
     
         public string id_proyecto { get; set; }
+
+        [DisplayName("Nombre de proyecto")]
         public string nombre { get; set; }
+
         public string descripcion { get; set; }
         public System.DateTime fecha_in { get; set; }
         public Nullable<System.DateTime> fecha_fin { get; set; }
