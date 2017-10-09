@@ -36,7 +36,10 @@ namespace Scrum_Manager.Models
         [DisplayName("Correo")]
         public string email { get; set; }
 
+        [DisplayName("Proyecto")]
         public string proyecto_FK { get; set; }
+
+        [DisplayName("Rol")]
         public string rol_FK { get; set; }
         public string user_FK { get; set; }
 
@@ -44,7 +47,7 @@ namespace Scrum_Manager.Models
         [DataType(DataType.Password)]
         [DisplayName("Contraseña")]
         public string contrasena { get; set; }
-    
+        
         public virtual AspNetRoles AspNetRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proyecto> Proyecto { get; set; }

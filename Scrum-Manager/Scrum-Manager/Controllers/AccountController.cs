@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -67,8 +68,7 @@ namespace Scrum_Manager.Controllers
         public ActionResult Login(Usuario modeloUsuario)
         {
             equipojorgeEntities db = new equipojorgeEntities();
-            var detallesUsuario = db.Usuario.Where(usuarioBase =>
-                usuarioBase.email == modeloUsuario.email && usuarioBase.contrasena == modeloUsuario.contrasena).FirstOrDefault();
+            var detallesUsuario = db.Usuario.FirstOrDefault(usuarioBase => usuarioBase.email == modeloUsuario.email && usuarioBase.contrasena == modeloUsuario.contrasena);
 
             if (detallesUsuario == null)
             {
@@ -77,7 +77,8 @@ namespace Scrum_Manager.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home",new{nombre = detallesUsuario.nombre, apellido = detallesUsuario.apellido1});
+                Session["userEmail"] = detallesUsuario.email;
+                return RedirectToAction("Index", "Home",new{email = detallesUsuario.email});
             }
 
             /*

@@ -8,8 +8,9 @@ namespace Scrum_Manager.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index(int? id)
+        public ActionResult Index(String email)
         {
+            ViewBag.email = email;
             return View();
         }
 

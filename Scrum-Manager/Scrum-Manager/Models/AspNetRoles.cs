@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
+
 namespace Scrum_Manager.Models
 {
     using System;
@@ -22,6 +24,7 @@ namespace Scrum_Manager.Models
         }
     
         public string Id { get; set; }
+        [DisplayName("Rol")]
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -41,7 +41,7 @@
             <br />
             <input type="submit" value="Entrar"/>
             <br />
-            <a href="#"><p class="small">¿Olvidó su contraseña?</p></a>
+            @Html.ActionLink("¿Olvidó su contraseña?", "ForgotPassword","Account")
             }
         </div>
     </div>
@@ -51,12 +51,4 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
-    @if (@ViewBag.Message != null)
-    {
-        <script type="text/javascript">
-            $(function () {
-                alert("@ViewBag.Message")
-            });
-        </script>
-    }
 }
